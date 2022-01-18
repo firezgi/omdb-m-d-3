@@ -61,7 +61,7 @@ function App() {
     
     
     <div className="App">
-      <p>hi</p>
+      
       <MovieList
       movies={movies}/>
 

@@ -3,7 +3,6 @@ import React from 'react'
 function MovieCard({posterUrl,title,type}) {
     return (
         <div>
-            <p>Hii</p>
             <img
             src={posterUrl}
             alt={`{title}poster`}/>

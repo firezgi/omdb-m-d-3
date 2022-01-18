@@ -2,10 +2,10 @@ import React from "react";
 import MovieCard from "../MovieCard";
 
 function MovieList({ movies }) {
-  console.log(movies);
+//   console.log(movies);
 
   return (
-    <div>
+    <div style={{display:"flex"}}>
       {movies.map((movie) => (
         <MovieCard 
           key={movie.imdbID}
