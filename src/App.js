@@ -1,47 +1,47 @@
 
 import { useEffect, useState } from "react";
 import "./App.css";
-import MovieCard from "./components/MovieCard";
-import MovieDetails from "./components/movieDetail/MovieDetail";
+// import MovieCard from "./components/MovieCard";
+// import MovieDetails from "./components/movieDetail/MovieDetail";
+import MovieList from "./components/MovieList/MovieList";
 import { getMovieDetailsById, getMoviesBySearchTerm } from "./utils/utils";
 
 function App() {
-  const[searchTerm,setSearchTerm]=useState("lion");
+  const[searchTerm,setSearchTerm]=useState("spiderman");
   const[isMovieData,setIsMovieData]=useState(false);
   const[movie,setMovie]=useState({})
-
-  // useEffect(()=>{
-  //   setIsMovieData(true)
-  //     getMoviesBySearchTerm(searchTerm)
-  //     .then((res)=>{
-  //       // console.log(res)
-  //       setMovies(res)
-  //     })
-  // },[]);
+  const[movies,setMovies]=useState([])
 
   useEffect(()=>{
     setIsMovieData(true)
-      getMovieDetailsById("tt2975590")
+      getMoviesBySearchTerm(searchTerm)
       .then((res)=>{
         console.log(res)
-        setMovie(res)
+        setMovies(res)
       })
-  },[])
+  },[searchTerm]);
+
+  // useEffect(()=>{
+  //   setIsMovieData(true)
+  //     getMovieDetailsById("tt2975590")
+  //     .then((res)=>{
+  //       console.log(res)
+  //       setMovie(res)
+  //     })
+  // },[])
 
 
-  // const hab=movies.map=(movie,i)=>
-  // {
-  //   <div>
-  //     {movie.Title}
-  //   </div>
-  // }
-  // console.log(movies)
+  
+  console.log(movies)
   return (
     
     
     <div className="App">
-      {<hab/>}
-      {isMovieData ? (
+      <p>hi</p>
+      <MovieList
+      movies={movies}/>
+
+      {/* {isMovieData ? (
         <MovieCard
           title={movie.Title}
           type={movie.Type}
@@ -49,8 +49,8 @@ function App() {
         />
       ) : (
         "Please refresh"
-      )}
-      {isMovieData ? (
+      )}  */}
+      {/* {isMovieData ? (
         <MovieDetails
           title={movie.Title}
           rated={movie.Type}
@@ -64,8 +64,8 @@ function App() {
         />
       ) : (
         "Please refresh"
-      )} 
-H
+      )}   */}
+
     </div>
   );
 }

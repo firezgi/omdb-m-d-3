@@ -2,7 +2,7 @@ const omdbURL="https://www.omdbapi.com/?";
 
 export const getMovieDetailsById= async(movieID)=>{
     const fetchData= await fetch(
-        `${omdbURL}apikey=39aeee96&i=${movieID}`
+        `${omdbURL}apikey=${process.env.REACT_APP_OMDB_API}&i=${movieID}`
     );
     const jsonData = await fetchData.json();
     return jsonData;
@@ -11,7 +11,7 @@ export const getMovieDetailsById= async(movieID)=>{
 
 export const getMoviesBySearchTerm= async(searchTerm)=>{
     const res= await fetch(
-        `${omdbURL}apikey=39aeee96&s=${searchTerm}`
+        `${omdbURL}apikey=${process.env.REACT_APP_OMDB_API}&s=${searchTerm}`
     );
     if(!res.ok){
         return Promise.reject(res.statusText);

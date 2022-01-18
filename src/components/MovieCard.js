@@ -1,8 +1,9 @@
 import React from 'react'
 
-const MovieCard=({posterUrl,title,type})=>  (
+function MovieCard({posterUrl,title,type}) {
+    return (
         <div>
-            Hi
+            <p>Hi</p>
             <img
             src={posterUrl}
             alt={`{title}poster`}/>
@@ -10,6 +11,7 @@ const MovieCard=({posterUrl,title,type})=>  (
             <span>{type}</span>
         </div>
     )
+}
 
+export default MovieCard
 
-export default MovieCard;
