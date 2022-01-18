@@ -7,18 +7,42 @@ import MovieList from "./components/MovieList/MovieList";
 import { getMovieDetailsById, getMoviesBySearchTerm } from "./utils/utils";
 
 function App() {
-  const[searchTerm,setSearchTerm]=useState("spiderman");
+  const[searchTerm,setSearchTerm]=useState("lion");
+  // const[searchType,setSearchType]=useState("");
+  // const[totalResults,setTotalResult]=useState("-");
+  // const[totalPages,setTotalPages]=useState("-");
+  // const[resultPage,setResultPage]=useState(1);
   const[isMovieData,setIsMovieData]=useState(false);
-  const[movie,setMovie]=useState({})
-  const[movies,setMovies]=useState([])
+  // const[movie,setMovie]=useState({});
+  const[movies,setMovies]=useState([]);
+  const[error,setError]=useState(null)
 
   useEffect(()=>{
     setIsMovieData(true)
-      getMoviesBySearchTerm(searchTerm)
+      getMoviesBySearchTerm(searchTerm,
+        // {type:searchType, page:resultPage}
+        )
       .then((res)=>{
         console.log(res)
-        setMovies(res)
+        setMovies(res.Search);
+        // setTotalResult(res.totalResults);
+        // setTotalPages(Math.ceil(res.totalResults/10));
+        // setError(null);
+        // console.log(movies)
+
       })
+      .catch(
+        (err)=>{
+          setError(err);
+          setMovies([]);
+          console.log("Error:",err)
+        }
+      )
+      .finally(()=>{
+        setIsMovieData(false)
+      }
+
+      )
   },[searchTerm]);
 
   // useEffect(()=>{

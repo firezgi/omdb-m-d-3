@@ -7,14 +7,18 @@ function MovieList({ movies }) {
   return (
     <div>
       {movies.map((movie) => (
-        <div key={movie.imdbID}>
+        <MovieCard 
+          key={movie.imdbID}
           title={movie.Title}
           posterUrl={movie.Poster}
           type={movie.Type}
-        </div>
+        />
       ))}
     </div>
   );
+}
+MovieList.defaultProps={
+    movies:[],
 }
 
 export default MovieList;
